@@ -1,15 +1,17 @@
-function tellme()
-	io.write("This is coming from lua.tellme.\n")
-end
+package.path = "../src/?.lua;src/?.lua;" .. package.path
+pcall(require, "luarocks.require")
 
-function square(n)
-	io.write("Within callfuncscript.lua fcn square, arg=")
-	io.write(tostring(n))
-	n = n * n
-	io.write(", square=")
-	io.write(tostring(n))
-	print(".")
-	return(n)
-end
+local redis = require 'redis'
 
-print("Priming run")
+local params = {
+    host = '127.0.0.1',
+    port = 6379,
+}
+
+local client = redis.connect(params)
+client:select(15) -- for testing purposes
+
+client:set('foo', 'bar')
+local value = client:get('foo')
+
+print(value)
