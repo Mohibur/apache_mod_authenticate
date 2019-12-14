@@ -1,0 +1,2 @@
+sudo apxs -i -a -c mod_authenticate.c
+sudo systemctl restart apache2.service

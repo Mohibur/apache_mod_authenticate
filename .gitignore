@@ -1,1 +1,8 @@
 run_lua
+*.slo
+*.lo
+*.la
+*.o
+*.so
+*.la
+*.lai
