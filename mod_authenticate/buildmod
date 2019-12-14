@@ -1,2 +1,6 @@
-sudo apxs -i -a -c mod_authenticate.c
+if [[ "${1}" == "debug" ]]; then
+  sudo apxs -i -a -c -DTESTINGNOW  mod_authenticate.c
+else
+  sudo apxs -i -a -c mod_authenticate.c
+fi
 sudo systemctl restart apache2.service
