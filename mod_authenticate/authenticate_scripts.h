@@ -17,5 +17,6 @@
   * script: target script absolute path. If not valid path or file does not exists, apache will failed to start
   * log: if not properly written 
   */
-int exec_validate_cmd (char *key, char *script, char *log);
+int exec_external_command (const char *key, const char *script, const char *log_file, const char *uri);
+
 #endif
