@@ -1,4 +1,4 @@
-#ifdef __scripts_h__
+#ifndef __scripts_h__
 #define __scripts_h__
 
 

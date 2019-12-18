@@ -4,17 +4,23 @@ PROCESSOR = ${PROC}_mod
 MAKE = make
 CC = gcc
 
-PROCESS_LIB_PATH=
-ADDITIONAL_LIB=
-ADDITIONAL_INC=
+PROCESS_LIB_PATH =
+ADDITIONAL_LIB = 
+ADDITIONAL_INC = -I$(PWD)/mod_authenticate/
 
+
+LIB=lib
+CMODE="-std=gnu99"
 COMPILE_OPTION = "-Wall -Wextra"
 
-build: 
+compile: clear
 	${MAKE} ${PROCESSOR}
 
-lua_mod:
-	${MAKE} ${CC} CCMODE="-std=gnu99" ${COMPILE_OPTION} -C $(PWD)/${PROCESSOR}/ 
+clear:
+	
+
+lua_mod: clear
+	${MAKE} compile  CC=${CC} CMODE=${CMODE} ADDITIONAL_INC=${ADDITIONAL_INC} ${COMPILE_OPTION} LIB=../${LIB}/ -C $(PWD)/${PROCESSOR}/ 
 
 php_mod:
-	${MAKE} ${CC} -C $(PWD)/${PROCESSOR}/
+	${MAKE} CC=${CC} -C $(PWD)/${PROCESSOR}/
